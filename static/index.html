@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Credit Risk Analyzer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="wrap">
+  <header class="intro">
+    <h1>Will this loan be repaid?</h1>
+    <p>Fill in the applicant's details and the model estimates the chance of default.</p>
+  </header>
+
+  <div class="layout">
+    <form id="form" class="panel" novalidate>
+      <div class="actions-top">
+        <span>Try an example:</span>
+        <button type="button" class="chip" data-sample="low">Low risk</button>
+        <button type="button" class="chip" data-sample="high">High risk</button>
+      </div>
+      <div class="fields">
+        <label>Age<input type="number" name="person_age" min="18" max="100" required></label>
+        <label>Annual income ($)<input type="number" name="person_income" min="1" required></label>
+        <label>Home ownership
+          <select name="person_home_ownership" required>
+            <option value="RENT">Rent</option><option value="OWN">Own</option>
+            <option value="MORTGAGE">Mortgage</option><option value="OTHER">Other</option>
+          </select></label>
+        <label>Years employed<input type="number" name="person_emp_length" min="0" step="0.5" required></label>
+        <label>Loan purpose
+          <select name="loan_intent" required>
+            <option value="PERSONAL">Personal</option><option value="EDUCATION">Education</option>
+            <option value="MEDICAL">Medical</option><option value="VENTURE">Venture</option>
+            <option value="HOMEIMPROVEMENT">Home improvement</option><option value="DEBTCONSOLIDATION">Debt consolidation</option>
+          </select></label>
+        <label>Loan grade
+          <select name="loan_grade" required>
+            <option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option>
+          </select></label>
+        <label>Loan amount ($)<input type="number" name="loan_amnt" min="1" required></label>
+        <label>Interest rate (%)<input type="number" name="loan_int_rate" min="0" step="0.01" required></label>
+        <label>Loan as % of income<input type="text" name="loan_percent_income" readonly placeholder="Calculated"></label>
+        <label>Past default on file
+          <select name="cb_person_default_on_file" required><option value="N">No</option><option value="Y">Yes</option></select></label>
+        <label class="wide">Credit history (years)<input type="number" name="cb_person_cred_hist_length" min="0" required></label>
+      </div>
+      <p id="error" class="error" role="alert" hidden></p>
+      <button id="submit" class="primary" type="submit"><span class="label">Check risk</span><span class="spinner"></span></button>
+    </form>
+
+    <aside class="panel dial-panel" id="result" data-state="idle">
+      <svg class="dial" viewBox="0 0 220 130" aria-hidden="true">
+        <defs>
+          <linearGradient id="g" x1="0" x2="1">
+            <stop offset="0" stop-color="#1f9d6b"/><stop offset=".5" stop-color="#e8b230"/><stop offset="1" stop-color="#d9443b"/>
+          </linearGradient>
+        </defs>
+        <path d="M20 110A90 90 0 0 1 200 110" fill="none" stroke="url(#g)" stroke-width="14" stroke-linecap="round"/>
+        <line id="thr" x1="110" y1="12" x2="110" y2="34" stroke="#10222b" stroke-width="3" transform="rotate(0 110 110)"/>
+        <g id="needle" style="transform:rotate(-90deg);transform-origin:110px 110px">
+          <line x1="110" y1="110" x2="110" y2="30" stroke="#10222b" stroke-width="4" stroke-linecap="round"/>
+        </g>
+        <circle cx="110" cy="110" r="9" fill="#10222b"/>
+      </svg>
+      <div class="pct"><span id="pct">--</span><small>%</small></div>
+      <p class="verdict" id="verdict">Waiting for details</p>
+      <p class="note" id="note">The dial moves once you submit the form.</p>
+      <dl class="stats">
+        <div><dt>Default probability</dt><dd id="s-prob">--</dd></div>
+        <div><dt>Decision threshold</dt><dd id="s-thr">--</dd></div>
+      </dl>
+    </aside>
+  </div>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
