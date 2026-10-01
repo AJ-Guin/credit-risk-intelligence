@@ -18,7 +18,6 @@ The model has been deployed as a web application.
 - Submit a loan application
 - Get the predicted risk probability
 - View the final risk classification
-- Understand the prediction using SHAP explanations
 
 ---
 
