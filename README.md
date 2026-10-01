@@ -679,40 +679,6 @@ Credit-Risk-Intelligence/
 
 ---
 
-# ▶️ Installation
-
-Clone the repository:
-
-```bash
-git clone https://github.com/AJ-Guin/credit-risk-intelligence.git
-```
-
-Move into the project directory:
-
-```bash
-cd credit-risk-intelligence
-```
-
-Create a virtual environment:
-
-```bash
-python -m venv venv
-```
-
-Activate it on Windows:
-
-```bash
-venv\Scripts\activate
-```
-
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
 # 📦 Main Dependencies
 
 A typical environment for reproducing the notebook includes:
