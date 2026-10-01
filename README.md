@@ -6,6 +6,22 @@ The goal is not only to predict whether an applicant is likely to default, but a
 
 ---
 
+## 🌐 Live Application
+
+The model has been deployed as a web application.
+
+👉 **[Launch Credit Risk Intelligence](https://credit-risk-intelligence-vu45.onrender.com)**
+
+### What you can do
+
+- Enter applicant information
+- Submit a loan application
+- Get the predicted risk probability
+- View the final risk classification
+- Understand the prediction using SHAP explanations
+
+---
+
 ## 🚀 Project Overview
 
 Credit risk assessment is a binary classification problem where the model estimates whether a loan applicant is likely to default.
