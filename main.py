@@ -9,8 +9,8 @@ ml_model={}
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    ml_model['model'] = joblib.load('credit_risk_model.pkl')
-    ml_model['threshold'] = joblib.load('best_threshold.pkl')
+    ml_model['model'] = joblib.load('model/credit_risk_model.pkl')
+    ml_model['threshold'] = joblib.load('model/best_threshold.pkl')
 
     yield
 
